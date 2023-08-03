@@ -91,7 +91,7 @@ header button:hover {
   }
 }
 
-/*HOME*/
+/* HOME */
 .cont-1 {
   background-color: #9aadbf;
   border-right: solid 5px black;
@@ -142,18 +142,121 @@ header button:hover {
     width: 360px;
   }
 }
-.cont-1 img {
+
+.card{
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  box-shadow: black;
+  box-shadow: 0 0 5px #000;
+  padding: 15px;
+}
+/* cambiar font */
+.card h3{  
+  font-family: arial;
+  font-weight: 550;
+  font-size: 23px;
+  text-align: center;
+  padding: 2px;
+  margin: auto;
+  max-width: 200px;
+}
+
+.price{
+  text-align: center;
+  color: #000;
+  font-size: 22px;
+}
+.card img {
   height: 354px;
   width: 230px;
 }
-.cont-1 .img {
+
+.comprar{
+  padding: 6px;
+  font-size: 18px;
+  border: 3px solid #000;
+  border-radius: 3px;
+  background-color: lightcoral;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+}
+
+.comprar:hover{
+  background-color: rgb(255,255,255);
+  box-shadow: 0 0 15px #0088a9;
+  box-shadow: 0 0 45px #0088a9;
+}
+
+/* Carrito */
+.cartPage{
+  width: 80%;
+  margin:0 10%;
+  height: 80%;
+  color: #fff;
+  background-color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /*Header*/
+  position: fixed;
+  overflow: auto;
+  z-index: 9;
+  scrollbar-color: none;
+}
+.cartPage::-webkit-scrollbar{
+  display: none;
+}
+
+.cartHeader{
+  display: flex;
+  justify-content: space-around;
+  background-color: #000;
+  color: #fff;
+  width: 100%;
+}
+
+.cartHeader h1{
+  justify-self: start;
+}
+
+.cartHeader button{
+  cursor: pointer
+}
+
+.cartPage > .ContenidoCarrito {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 70%;
+  margin: 10px;
+}
+
+.ContenidoCarrito > div > img{
+  height: 120px;
+  width: 120px;
+}
+
+.totalPrice{
+  font-size: 25px;
+  padding: 20px;
+  text-align: center;
+  padding-top: 20px;
+}
+
+
+
+
+/* .cont-1 .card {
   box-sizing: border-box;
   background-color: white;
   border: solid 3px whitesmoke;
+  padding: 20px;
   border-radius: 3px;
   height: 360px;
   width: 236px;
-}
+} */
 
 
 
@@ -248,4 +351,4 @@ footer .fa-linkedin:hover {
   box-shadow: 0 0 75px rgb(28, 70, 177);
 }
 
-/*# sourceMappingURL=estilos.css.map */
+
