@@ -92,7 +92,7 @@ header button:hover {
 }
 
 /* HOME */
-.cont-1 {
+.shop_content{
   background-color: #9aadbf;
   border-right: solid 5px black;
   border-left: solid 5px black;
@@ -107,7 +107,7 @@ header button:hover {
   place-items: center center;
 }
 @media screen and (max-width: 1150px) {
-  .cont-1 {
+  .shop_content {
     place-content: space-evenly space-evenly;
     place-items: center center;
     grid-template-columns: repeat(3, 1fr);
@@ -116,7 +116,7 @@ header button:hover {
   }
 }
 @media screen and (max-width: 900px) {
-  .cont-1 {
+  .shop_content {
     place-content: space-evenly space-evenly;
     place-items: center center;
     grid-template-columns: repeat(2, 1fr);
@@ -125,7 +125,7 @@ header button:hover {
   }
 }
 @media screen and (max-width: 550px) {
-  .cont-1 {
+  .shop_content {
     place-content: space-evenly space-evenly;
     place-items: center center;
     grid-template-columns: repeat(1, 1fr);
@@ -134,7 +134,7 @@ header button:hover {
   }
 }
 @media screen and (max-width: 550px) {
-  .cont-1 {
+  .shop_content {
     place-content: space-evenly space-evenly;
     place-items: center center;
     grid-template-columns: repeat(1, 1fr);
@@ -151,7 +151,7 @@ header button:hover {
   box-shadow: 0 0 5px #000;
   padding: 15px;
 }
-/* cambiar font */
+
 .card h3{  
   font-family: arial;
   font-weight: 550;
@@ -188,57 +188,59 @@ header button:hover {
   box-shadow: 0 0 45px #0088a9;
 }
 
-/* Carrito */
-.cartPage{
+
+.modal-container{
   width: 80%;
   margin:0 10%;
-  height: 80%;
   color: #fff;
-  background-color: #000;
+  background-color: #121212;
   display: flex;
   flex-direction: column;
   align-items: center;
-  /*Header*/
   position: fixed;
   overflow: auto;
   z-index: 9;
   scrollbar-color: none;
 }
-.cartPage::-webkit-scrollbar{
+
+.modal-container::-webkit-scrollbar{
   display: none;
 }
-
-.cartHeader{
+.modal-header{
   display: flex;
   justify-content: space-around;
-  background-color: #000;
+  background-color: #0a0909;
   color: #fff;
   width: 100%;
 }
-
-.cartHeader h1{
-  justify-self: start;
+.modal-header-button {
+  cursor: pointer;
 }
 
-.cartHeader button{
-  cursor: pointer
-}
-
-.cartPage > .ContenidoCarrito {
+.modal-content{
+  background-color: #404248;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
   align-items: center;
-  width: 70%;
-  margin: 10px;
+  justify-content: space-around;
+  color: #fff;
 }
 
-.ContenidoCarrito > div > img{
-  height: 120px;
-  width: 120px;
+.modal-content img{
+  padding-top: 23px;
+  padding-bottom: 23px;
+  height: 324px;
+  width: 230px;
 }
-
-.totalPrice{
+.modal-content h3{
+  font-size: 25px;
+}
+.modal-content p{
+  font-size: 25px;
+}
+.total-content{
+  background-color: #000000;
+  color: #fff;
   font-size: 25px;
   padding: 20px;
   text-align: center;

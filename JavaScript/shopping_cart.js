@@ -1,89 +1,75 @@
-//Variable del carrito
-let cart = []
-
-//Variable para la pagina del carrito
-
-const cart_content = document.getElementById("cart_content")
-
-//Variable para ver el carrito
-const showCart = document.getElementById("showCart")
-
-//1ero Recorrer el array para que se muestren los objetos
-//Crear el div contenedor y sus elementos (productos) a partir de una variable 
-//innerHTML permite agregar etiquetas dentro del div
-const shopContent = document.getElementById("shop_content")  //Como seria con querySelector
-
-products.forEach((producto) => {
-    let content = document.createElement("div")
+//Div del shop content
+const shopContent = document.getElementById("shop_content") ;
+//Ver Carrito
+const verCarrito = document.getElementById("verCarrito");
+//Modal
+const modalContainer = document.getElementById("modal-container");
+//Array del carrito
+let carrito = [];
+//productos de la página
+productos.forEach((product) => {
+    let content = document.createElement("div");
     content.className = "card";
-    content.innerHTML =`
-    <img src="${producto.img}"/>
-    <h3>"${producto.name}"</h3>
-    <p class="price">Precio: ${producto.price} $</p>
+    content.innerHTML = `
+    <img src="${product.img}"/>,
+    <h3>${product.nombre}</h3>
+    <p class="price">${product.precio}$</p>
     `;
-    
+
     shopContent.append(content)
 
-    let buy = document.createElement("button")
-    buy.innerText = "AGREGAR AL CARRITO" //Ya esta creado el HTML solo se le añade texto al boton
-    buy.className = "comprar";
+    let comprar = document.createElement("button");
+    comprar.innerText = "AGREGAR AL CARRITO";
+    comprar.className = "comprar";
 
-    content.append(buy);
+    content.append(comprar)
 
-    //Funcionalidad del boton para añadir elementos al carrito
+    comprar.addEventListener("click", () => {
+        carrito.push({
+            id: product.id,
+            img: product.img,
+            nombre: product.nombre,
+            precio: product.precio,
+        });
+    });
+});
+
+verCarrito.addEventListener("click", () => {
+    modalContainer.innerHTML = ""
     
-    buy.addEventListener("click", () => {
-        cart.push({
-            id:producto.id,
-            img:producto.img,
-            name:producto.name,
-            price:producto.price,
-        })
+    const modalHeader = document.createElement("div");
+    modalHeader.className = "modal-header";
+    modalHeader.innerHTML = `
+    <h1 class="modal-header">CARRITO</h1>
+    `;
+    modalContainer.append(modalHeader);
+
+    const modalButton = document.createElement("h1");
+    modalButton.innerText = "X";
+    modalButton.className = "modal-header-button";
+
+    modalButton.addEventListener("click", () => {
+        modalContainer.style.display = "none";
     })
+
+    modalHeader.append(modalButton);
+
+    carrito.forEach((product) => {
+
+        let carritoContent = document.createElement("div");
+        carritoContent.className = "modal-content"
+        carritoContent.innerHTML = `
+            <img src="${product.img}"/>
+            <h3>${product.nombre}</h3>
+            <p>${product.precio}$</p>
+            `;
+
+            modalContainer.append(carritoContent);
+    })
+    const total = carrito.reduce((acc, el) => acc + el.precio, 0);
+    const totalBuying = document.createElement("div");
+    totalBuying.className = "total-content"
+    totalBuying.innerHTML = `TOTAL: ${total}$`;
+
+    modalContainer.append(totalBuying);
 });
-
-//Escuchador de cuando el usuario hace 1 click, y hacer una "paguina" para el carrito 
-
-showCart.addEventListener("click", () => {
-    cart_content.innerHTML= "";
-    cart_content.style.display = "flex";
-    const cartHeader = document.createElement("div")
-    cartHeader.className = "cartHeader"
-    cartHeader.innerHTML = `
-    <h1>CARRITO</h1>`;
-
-    cart_content.append(cartHeader);
-
-    const cartButton = document.createElement("h1")
-    cartButton.className = "cartButton"
-    cartButton.innerText = "X"
-
-    cartButton.addEventListener("click", () => {
-        cart_content.style.display = "none";
-    })
-    cartHeader.append(cartButton)
-
-    //Recorre el cart y va creando la pagina del carrito
-    cart.forEach((producto) => {
-        let cartContent = document.createElement("div")
-        cartContent.className = "ContenidoCarrito"
-        cartContent.innerHTML = `
-        <img src="${producto.img}"/>
-        <h3>"${producto.name}"</h3>
-        <p class="price">Precio: ${producto.price} $</p>
-        `;
-
-        //Añadir productos a la pagina
-        showCart.append(cartContent)
-    })
-
-    //Ver total (acc acumulador, el cada producto dentro del carrito)
-
-    const total = cart.reduce((acc, el) => acc + el.price, acc = 0);
-
-    const totalPrice = document.createElement("div")
-    totalPrice.className = "totalPrice"
-    totalPrice.innerHTML = `Total a pagar: ${total} $`;
-    showCart.append(totalPrice)
-});
-
