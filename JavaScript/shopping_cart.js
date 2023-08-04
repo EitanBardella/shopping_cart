@@ -35,7 +35,7 @@ productos.forEach((product) => {
 });
 
 verCarrito.addEventListener("click", () => {
-    
+    modalContainer.innerHTML = "";
     
     const modalHeader = document.createElement("div");
     modalHeader.className = "modal-header";
@@ -50,7 +50,6 @@ verCarrito.addEventListener("click", () => {
 
     modalButton.addEventListener("click", () => {
         modalContainer.style.display = "none";
-        console.log("modalButton")
     })
     modalHeader.append(modalButton);
 
@@ -71,5 +70,5 @@ verCarrito.addEventListener("click", () => {
     totalBuying.className = "total-content"
     totalBuying.innerHTML = `TOTAL: ${total}$`;
     modalContainer.append(totalBuying);
-    console.log(verCarrito)
+    modalContainer.style.display = "block";
 });
