@@ -217,7 +217,7 @@ header button:hover {
   cursor: pointer;
 }
 
-.modal-content{
+/* .modal-content{
   background-color: #404248;
   display: flex;
   flex-direction: row;
@@ -237,7 +237,7 @@ header button:hover {
 }
 .modal-content p{
   font-size: 25px;
-}
+} */
 .total-content{
   background-color: #000000;
   color: #fff;
