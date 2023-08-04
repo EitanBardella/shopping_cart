@@ -1,12 +1,12 @@
 //Variable del carrito
 let cart = []
 
-//Variable para ver el carrito
-const showCart = document.getElementById("showCart")
-
 //Variable para la pagina del carrito
 
 const cart_content = document.getElementById("cart_content")
+
+//Variable para ver el carrito
+const showCart = document.getElementById("showCart")
 
 //1ero Recorrer el array para que se muestren los objetos
 //Crear el div contenedor y sus elementos (productos) a partir de una variable 
@@ -61,7 +61,6 @@ showCart.addEventListener("click", () => {
     cartButton.addEventListener("click", () => {
         cart_content.style.display = "none";
     })
-    
     cartHeader.append(cartButton)
 
     //Recorre el cart y va creando la pagina del carrito
