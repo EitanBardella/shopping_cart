@@ -243,6 +243,24 @@ header button:hover {
 .modal-content p{
   font-size: 25px;
 }
+
+
+
+
+/*bnt eliminar, sumar y restar*/
+.restar{
+  cursor: pointer;
+  font-size: 30px;
+}
+.sumar{
+  cursor: pointer;
+  font-size: 30px;
+}
+.delete-produtc{
+  cursor: pointer;
+  font-size: 25px;
+}
+
 .total-content{
   background-color: #000000;
   color: #fff;

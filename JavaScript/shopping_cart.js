@@ -1,40 +1,12 @@
-//Div del shop content
-const shopContent = document.getElementById("shop_content") ;
-//Ver Carrito
+
+//Ver Carrito (Me conviene pasar esta variable a shopping_cart??)
 const verCarrito = document.getElementById("verCarrito");
 //Modal
 const modalContainer = document.getElementById("modal-container");
-//Array del carrito
-let carrito = [];
-//productos de la página
-productos.forEach((product) => {
-    let content = document.createElement("div");
-    content.className = "card";
-    content.innerHTML = `
-    <img src="${product.img}"/>,
-    <h3>${product.nombre}</h3>
-    <p class="price">${product.precio}$</p>
-    `;
 
-    shopContent.append(content)
 
-    let comprar = document.createElement("button");
-    comprar.innerText = "AGREGAR AL CARRITO";
-    comprar.className = "comprar";
+const pintarCarrito = () =>{
 
-    content.append(comprar)
-
-    comprar.addEventListener("click", () => {
-        carrito.push({
-            id: product.id,
-            img: product.img,
-            nombre: product.nombre,
-            precio: product.precio,
-        });
-    });
-});
-
-verCarrito.addEventListener("click", () => {
     modalContainer.innerHTML = "";
     
     const modalHeader = document.createElement("div");
@@ -61,14 +33,63 @@ verCarrito.addEventListener("click", () => {
             <img src="${product.img}"/>
             <h3>${product.nombre}</h3>
             <p>${product.precio}$</p>
+            <span class="restar"> - </span>
+            <p>Cantidad: ${product.cantidad}</p>
+            <span class="sumar"> + </span>
+            <p>Total: ${product.cantidad * product.precio}</p>
+            <span class="delete-produtc"> ❌ </span>
             `;
 
             modalContainer.append(carritoContent);
+
+            let restar = carritoContent.querySelector(".restar");
+            restar.addEventListener("click", () => {
+                if(product.cantidad !== 1) {
+                product.cantidad--;
+                saveLocal();
+                pintarCarrito();
+                }
+            })
+            let sumar = carritoContent.querySelector(".sumar");
+            sumar.addEventListener("click", () => {
+                product.cantidad++;
+                saveLocal();
+                pintarCarrito();
+            })
+
+            let eliminar = carritoContent.querySelector(".delete-produtc");
+            eliminar.addEventListener("click", () => {
+                eliminarProducto(product.id);
+            });
+            // let eliminar = document.createElement("span");
+            // eliminar.innerText = "❌";
+            // eliminar.className = "delete-produtc";
+            // carritoContent.append(eliminar);
+
+            eliminar.addEventListener("click", eliminarProducto);
     })
-    const total = carrito.reduce((acc, el) => acc + el.precio, 0);
+    const total = carrito.reduce((acc, el) => acc + el.precio * el.cantidad, 0);
+
     const totalBuying = document.createElement("div");
     totalBuying.className = "total-content"
     totalBuying.innerHTML = `TOTAL: ${total}$`;
     modalContainer.append(totalBuying);
     modalContainer.style.display = "block";
-});
+
+
+};
+
+
+verCarrito.addEventListener("click", pintarCarrito);
+
+//Funcion eliminar, find por id, filter prods del carrito que no coincidan con el id, para volver a hacer/pintar el carrito sin ese id
+
+const eliminarProducto = (id) => {
+    const foundId = carrito.find((element) => element.id === id);
+
+    carrito = carrito.filter((carritoId) =>{
+        return carritoId !== foundId;
+    });
+    saveLocal();
+    pintarCarrito();
+};
