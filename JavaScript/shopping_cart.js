@@ -60,6 +60,20 @@ const pintarCarrito = () =>{
             let eliminar = carritoContent.querySelector(".delete-produtc");
             eliminar.addEventListener("click", () => {
                 eliminarProducto(product.id);
+                Toastify({
+                    text: "Producto Eliminado",
+                    duration: 3000,
+                    destination: "",
+                    newWindow: true,
+                    close: true,
+                    gravity: "top", // `top` or `bottom`
+                    position: "right", // `left`, `center` or `right`
+                    stopOnFocus: true, // Prevents dismissing of toast on hover
+                    style: {
+                        background: "linear-gradient(to right, #3185FC, #34E5FF)",
+                    },
+                    onClick: function(){} // Callback after click
+                }).showToast();
             });
             // let eliminar = document.createElement("span");
             // eliminar.innerText = "❌";
