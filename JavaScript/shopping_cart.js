@@ -1,8 +1,10 @@
 
 //Ver Carrito (Me conviene pasar esta variable a shopping_cart??)
 const verCarrito = document.getElementById("verCarrito");
-//Modal
+//Modal del carrito
 const modalContainer = document.getElementById("modal-container");
+//Modal de pago
+const modalPay = document.getElementById("modal-pay");
 
 
 const pintarCarrito = () =>{
@@ -89,6 +91,22 @@ const pintarCarrito = () =>{
     totalBuying.innerHTML = `TOTAL: ${total}$`;
     modalContainer.append(totalBuying);
     modalContainer.style.display = "block";
+
+    let pay = document.createElement("button");
+    pay.className = "pay";
+    pay.innerText = "FINALIZAR COMPRA";
+    totalBuying.append(pay);
+
+    pay.addEventListener("click", () => {
+        const payHeader = document.createElement("div");
+        payHeader.className = "pay-header";
+        payHeader.innerHTML = `
+        <h1 class="modal-header">PAGO</h1>
+        `;
+        modalPay.append(payHeader);
+    
+        payHeader.append(modalButton);
+    } );
 
 
 };
