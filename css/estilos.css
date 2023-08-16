@@ -222,6 +222,7 @@ header button:hover {
 
 .modal-header-button {
   cursor: pointer;
+  font-size: 42px;
 }
 
 .modal-content{
@@ -245,38 +246,6 @@ header button:hover {
 .modal-content p{
   font-size: 25px;
 }
-/*Modal de Pago*/
-
-.modal-pay{
-  background-color: rgba(255, 0, 0, 0.6);
-  position: fixed; /*Ponerlo stiky*/
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 9999999;
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  max-width: 80%;
-  margin: 10vh auto;
-  overflow-y: auto;
-}
-
-.pay-header{
-  display: flex;
-  justify-content: space-around;
-  background-color: #0a0909;
-  color: #fff;
-  width: 100%;
-  padding: 10px;
-  position: sticky; top: 0;
-}
-/* .modal-header-button {
-  cursor: pointer;
-} */
-
 
 /*bnt eliminar, sumar y restar*/
 .restar{
@@ -314,6 +283,61 @@ header button:hover {
   cursor: pointer;
   transition: all 0.3s ease 0s;
 }
+
+/*Modal de Pago*/
+
+.modal-pay{
+  background-color: rgba(0, 0, 0, 0.6);
+  position: fixed; /*Ponerlo stiky*/
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999999;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 80%;
+  margin: 10vh auto;
+  overflow-y: auto;
+}
+
+.pay-header{
+  display: flex;
+  justify-content: space-around;
+  background-color: #0a0909;
+  color: #fff;
+  width: 100%;
+  padding: 10px;
+  position: sticky; top: 0;
+}
+.pay-header-button {
+  cursor: pointer;
+  font-size: 42px;
+}
+
+.creditCart{}
+
+.payFooter{
+  background-color: #000000;
+  color: #fff;
+  font-size: 25px;
+  padding: 20px;
+  text-align: center;
+  padding-top: 20px;
+}
+
+.buyButton{
+  padding: 6px;
+  font-size: 18px;
+  border: 3.5px solid #000;
+  border-radius: 3px;
+  background-color: lightcoral;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+}
+
 
 
 

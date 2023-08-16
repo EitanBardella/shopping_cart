@@ -6,11 +6,93 @@ const modalContainer = document.getElementById("modal-container");
 //Modal de pago
 const modalPay = document.getElementById("modal-pay");
 
+const sold = () => {
+    //Funcion de que desaparesca el modal del carrito y aparesca el de finalizar compra
+
+    modalContainer.style.display = "none";
+    modalPay.style.display = "block";
+
+    //div del header del modal para finalizar compra
+    const payHeader = document.createElement("div");
+    payHeader.className = "modal-header"
+    payHeader.innerHTML =`
+    <h1 class="modal-header">FINALIZAR COMPRA</h1>
+    `;
+    modalPay.append(payHeader);
+
+    const payButton = document.createElement("h1");
+    payButton.innerText = "X";
+    payButton.className = "pay-header-button";
+    
+
+    payButton.addEventListener("click", () => {
+        modalPay.style.display = "none";
+    })
+    payHeader.append(payButton);
+
+    //contenedor con la tarjeta de credito
+
+    const creditCart = document.createElement("div");() => {
+        creditCart.className = "creditCart"
+        creditCart.innerHTML = `
+        <h1 class="">AGREGUE UNA TARJETA DE CREDITO</h1>
+        <input class="credit-input"></input>
+        `;
+        new Cleave(`.credit-input`,{
+            creditCard: true,
+            onCreditCardTypeChanged: function (type) {
+                // Actualizar la interfaz de usuario ...
+            }
+        })
+    };
+
+    modalPay.append(creditCart);
+
+    creditCart();
+
+    //footer con el boton de pagar y la sweet alert
+
+    const payFooter = document.createElement("div");
+    payFooter.className = "payFooter",
+    modalPay.append(payFooter);
+
+    const buy = document.createElement("button");
+    buy.className = "buyButton",
+    buy.addEventListener("click", () =>{
+        Swal.fire({
+            title: 'Estas seguro',
+            text: "No hay reembolsos!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3F88C5',
+            cancelButtonColor: '#D00000',
+            confirmButtonText: 'Comprar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                'Compra Exitosa!',
+                )
+            } else{
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Pago no Realizado',
+                })
+            };
+        })
+    })
+
+    payFooter.append(buy);
+    
+
+}
+
+
 
 const pintarCarrito = () =>{
 
     modalContainer.innerHTML = "";
     
+    //div del header del modal del carrito
     const modalHeader = document.createElement("div");
     modalHeader.className = "modal-header";
     modalHeader.innerHTML = `
@@ -26,7 +108,8 @@ const pintarCarrito = () =>{
         modalContainer.style.display = "none";
     })
     modalHeader.append(modalButton);
-
+    
+    //Recorrer array para mostrarlos en el carrito, junto con la cantidad y precio
     carrito.forEach((product) => {
 
         let carritoContent = document.createElement("div");
@@ -84,6 +167,7 @@ const pintarCarrito = () =>{
 
             eliminar.addEventListener("click", eliminarProducto);
     })
+    //Calculo del total del precio final
     const total = carrito.reduce((acc, el) => acc + el.precio * el.cantidad, 0);
 
     const totalBuying = document.createElement("div");
@@ -93,22 +177,11 @@ const pintarCarrito = () =>{
     modalContainer.style.display = "block";
 
     let pay = document.createElement("button");
-    pay.className = "pay";
-    pay.innerText = "FINALIZAR COMPRA";
+    pay.className = "pay"
+    pay.innerText = "FINALIZAR COMPRA"
     totalBuying.append(pay);
 
-    pay.addEventListener("click", () => {
-        const payHeader = document.createElement("div");
-        payHeader.className = "pay-header";
-        payHeader.innerHTML = `
-        <h1 class="modal-header">PAGO</h1>
-        `;
-        modalPay.append(payHeader);
-    
-        payHeader.append(modalButton);
-    } );
-
-
+    pay.addEventListener("click", sold);
 };
 
 
@@ -125,3 +198,6 @@ const eliminarProducto = (id) => {
     saveLocal();
     pintarCarrito();
 };
+
+
+
