@@ -10,6 +10,7 @@ const sold = () => {
     //Funcion de que desaparesca el modal del carrito y aparesca el de finalizar compra
 
     modalContainer.style.display = "none";
+    modalPay.innerHTML = "";
     modalPay.style.display = "block";
 
     //div del header del modal para finalizar compra
@@ -32,23 +33,23 @@ const sold = () => {
 
     //contenedor con la tarjeta de credito
 
-    const creditCart = document.createElement("div");() => {
-        creditCart.className = "creditCart"
-        creditCart.innerHTML = `
-        <h1 class="">AGREGUE UNA TARJETA DE CREDITO</h1>
-        <input class="credit-input"></input>
-        `;
-        new Cleave(`.credit-input`,{
-            creditCard: true,
-            onCreditCardTypeChanged: function (type) {
-                // Actualizar la interfaz de usuario ...
-            }
-        })
-    };
+    const creditCart = document.createElement("div");
+    creditCart.className = "creditCart"
+    creditCart.innerHTML = `
+    <h1 class="">AGREGUE UNA TARJETA DE CREDITO</h1>
+    <input class="credit-input"></input>
+    `;
+        // new Cleave(`.credit-input`,{
+        //     creditCard: true,
+        //     onCreditCardTypeChanged: function (type) {
+        //         // Actualizar la interfaz de usuario ...
+        //     }
+        // })
+    
 
     modalPay.append(creditCart);
 
-    creditCart();
+
 
     //footer con el boton de pagar y la sweet alert
 
@@ -58,6 +59,7 @@ const sold = () => {
 
     const buy = document.createElement("button");
     buy.className = "buyButton",
+    buy.innerText = "PAGAR",
     buy.addEventListener("click", () =>{
         Swal.fire({
             title: 'Estas seguro',
@@ -66,11 +68,14 @@ const sold = () => {
             showCancelButton: true,
             confirmButtonColor: '#3F88C5',
             cancelButtonColor: '#D00000',
-            confirmButtonText: 'Comprar'
+            confirmButtonText: 'Comprar',
+            
         }).then((result) => {
             if (result.isConfirmed) {
                 Swal.fire(
-                'Compra Exitosa!',
+                    'Compra Exotosa!',
+                    'Su pago se ha realizado con exito',
+                    'success'
                 )
             } else{
                 Swal.fire({
@@ -82,7 +87,7 @@ const sold = () => {
     })
 
     payFooter.append(buy);
-    
+
 
 }
 

@@ -301,6 +301,7 @@ header button:hover {
   max-width: 80%;
   margin: 10vh auto;
   overflow-y: auto;
+  height: 80vh;
 }
 
 .pay-header{
@@ -317,7 +318,11 @@ header button:hover {
   font-size: 42px;
 }
 
-.creditCart{}
+.creditCart{
+  background-color: #404248;
+  display: grid;
+  place-content: center center;
+}
 
 .payFooter{
   background-color: #000000;
@@ -326,11 +331,14 @@ header button:hover {
   padding: 20px;
   text-align: center;
   padding-top: 20px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 .buyButton{
   padding: 6px;
-  font-size: 18px;
+  font-size: 35px;
   border: 3.5px solid #000;
   border-radius: 3px;
   background-color: lightcoral;
