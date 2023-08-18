@@ -350,7 +350,6 @@ header button:hover {
   font-size: 80px;
   padding: 50px;
   opacity: 0.3;
-  color: white;
 }
 
 .creditForm i.active{
@@ -358,14 +357,14 @@ header button:hover {
   opacity: 1;
   transform: scale(1.3);
   transition: all 0.5s ease 0s;
-  padding-left: 95px;
+  padding-left: 129px;
 }
 
 .creditForm i.remove{
-  color: #ff0080;
-  opacity: 0;
-  transition: all 100s ease 0s;
-  transform: scale(1.3);
+  color: #1c1c1f;
+  opacity: 1;
+  transition: all 1s ease 0s;
+  transform: scale(1);
   padding-left: 95px;
 }
 

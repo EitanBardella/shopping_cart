@@ -49,28 +49,21 @@ const sold = () => {
 
     creditCart.append(creditForm);
 
-    new Cleave(`.credit-input`,{
+    new Cleave(`.credit-input`, {
         creditCard: true,
-        // delimiter: "-",
-        onCreditCardTypeChanged: function (type){
+        onCreditCardTypeChanged: function (type) {
             console.log(type);
-            if(type === "visa"){
-                document.querySelector(`.fa-cc-visa`).classList.add(`active`);
-            } else {
-                document.querySelector(`.fa-cc-visa`).classList.remove(`active`);
-            }
-            if(type === "mastercard"){
-                document.querySelector(`.fa-cc-mastercard`).classList.add(`active`);
-            } else {
-                document.querySelector(`.fa-cc-mastercard`).classList.remove(`active`);
-            }
-            if(type === "amex"){
-                document.querySelector(`.fa-cc-amex`).classList.add(`active`);
-            } else {
-                document.querySelector(`.fa-cc-amex`).classList.remove(`active`);
-            }
+            document.querySelector(`.fa-cc-visa`).classList.toggle(`active`, type === "visa");
+            document.querySelector(`.fa-cc-mastercard`).classList.toggle(`active`, type === "mastercard");
+            document.querySelector(`.fa-cc-amex`).classList.toggle(`active`, type === "amex");
+    
+            // Add the 'remove' class for smooth transition back
+            document.querySelector(`.fa-cc-visa`).classList.toggle(`remove`, type !== "visa");
+            document.querySelector(`.fa-cc-mastercard`).classList.toggle(`remove`, type !== "mastercard");
+            document.querySelector(`.fa-cc-amex`).classList.toggle(`remove`, type !== "amex");
         }
     });
+    
 
 //revisar cleave.js
     //footer con el boton de pagar y la sweet alert
