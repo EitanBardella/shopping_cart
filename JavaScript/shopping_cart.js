@@ -35,22 +35,44 @@ const sold = () => {
 
     const creditCart = document.createElement("div");
     creditCart.className = "creditCart"
-    creditCart.innerHTML = `
-    <h1 class="">AGREGUE UNA TARJETA DE CREDITO</h1>
-    <input class="credit-input"></input>
-    `;
-        // new Cleave(`.credit-input`,{
-        //     creditCard: true,
-        //     onCreditCardTypeChanged: function (type) {
-        //         // Actualizar la interfaz de usuario ...
-        //     }
-        // })
-    
-
     modalPay.append(creditCart);
+    const creditForm = document.createElement("form");
+    creditForm.className = "creditForm"
+    creditForm.innerHTML = `
+    <h1>AGREGUE SU TARJETA</h1>
+    <input class="credit-input">
+    <br></br>
+    <i class="fa-brands fa-cc-visa"></i>
+    <i class="fa-brands fa-cc-amex"></i>
+    <i class="fa-brands fa-cc-mastercard"></i>
+    `;
 
+    creditCart.append(creditForm);
 
+    new Cleave(`.credit-input`,{
+        creditCard: true,
+        // delimiter: "-",
+        onCreditCardTypeChanged: function (type){
+            console.log(type);
+            if(type === "visa"){
+                document.querySelector(`.fa-cc-visa`).classList.add(`active`);
+            } else {
+                document.querySelector(`.fa-cc-visa`).classList.remove(`active`);
+            }
+            if(type === "mastercard"){
+                document.querySelector(`.fa-cc-mastercard`).classList.add(`active`);
+            } else {
+                document.querySelector(`.fa-cc-mastercard`).classList.remove(`active`);
+            }
+            if(type === "amex"){
+                document.querySelector(`.fa-cc-amex`).classList.add(`active`);
+            } else {
+                document.querySelector(`.fa-cc-amex`).classList.remove(`active`);
+            }
+        }
+    });
 
+//revisar cleave.js
     //footer con el boton de pagar y la sweet alert
 
     const payFooter = document.createElement("div");
@@ -69,18 +91,28 @@ const sold = () => {
             confirmButtonColor: '#3F88C5',
             cancelButtonColor: '#D00000',
             confirmButtonText: 'Comprar',
-            
+            customClass: {
+                container: 'custom-swal-container'
+            }
         }).then((result) => {
             if (result.isConfirmed) {
-                Swal.fire(
-                    'Compra Exotosa!',
-                    'Su pago se ha realizado con exito',
-                    'success'
-                )
+                modalPay.style.display = "none",
+                Swal.fire({
+                    title: 'Compra Exitosa!',
+                    text: 'Su pago se ha realizado con éxito',
+                    icon: 'success',
+                    customClass: {
+                        container: 'custom-swal-container'
+                    },
+                });
             } else{
+                modalPay.style.display = "none",
                 Swal.fire({
                     icon: 'error',
                     title: 'Pago no Realizado',
+                    customClass: {
+                        container: 'custom-swal-container'
+                    },
                 })
             };
         })
@@ -165,10 +197,6 @@ const pintarCarrito = () =>{
                     onClick: function(){} // Callback after click
                 }).showToast();
             });
-            // let eliminar = document.createElement("span");
-            // eliminar.innerText = "❌";
-            // eliminar.className = "delete-produtc";
-            // carritoContent.append(eliminar);
 
             eliminar.addEventListener("click", eliminarProducto);
     })
@@ -177,7 +205,7 @@ const pintarCarrito = () =>{
 
     const totalBuying = document.createElement("div");
     totalBuying.className = "total-content"
-    totalBuying.innerHTML = `TOTAL: ${total}$`;
+    totalBuying.innerHTML = `<h1>TOTAL: ${total} $</h1>`;
     modalContainer.append(totalBuying);
     modalContainer.style.display = "block";
 
