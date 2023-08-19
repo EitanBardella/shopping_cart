@@ -7,7 +7,6 @@ const modalContainer = document.getElementById("modal-container");
 const modalPay = document.getElementById("modal-pay");
 
 const sold = () => {
-    //Funcion de que desaparesca el modal del carrito y aparesca el de finalizar compra
 
     modalContainer.style.display = "none";
     modalPay.innerHTML = "";
@@ -31,7 +30,7 @@ const sold = () => {
     })
     payHeader.append(payButton);
 
-    //contenedor con la tarjeta de credito
+    //contenedor para el formulario para agregar la tarjeta de credito
 
     const creditCart = document.createElement("div");
     creditCart.className = "creditCart"
@@ -48,7 +47,7 @@ const sold = () => {
     `;
 
     creditCart.append(creditForm);
-
+    //Libreria Cleave.js para modificar el input para agregar tarjeta de credito
     new Cleave(`.credit-input`, {
         creditCard: true,
         onCreditCardTypeChanged: function (type) {
@@ -57,7 +56,7 @@ const sold = () => {
             document.querySelector(`.fa-cc-mastercard`).classList.toggle(`active`, type === "mastercard");
             document.querySelector(`.fa-cc-amex`).classList.toggle(`active`, type === "amex");
     
-            // Add the 'remove' class for smooth transition back
+            // se añade una clase de remove para una back transition mas suave
             document.querySelector(`.fa-cc-visa`).classList.toggle(`remove`, type !== "visa");
             document.querySelector(`.fa-cc-mastercard`).classList.toggle(`remove`, type !== "mastercard");
             document.querySelector(`.fa-cc-amex`).classList.toggle(`remove`, type !== "amex");
@@ -65,7 +64,6 @@ const sold = () => {
     });
     
 
-//revisar cleave.js
     //footer con el boton de pagar y la sweet alert
 
     const payFooter = document.createElement("div");
@@ -76,7 +74,10 @@ const sold = () => {
     buy.className = "buyButton",
     buy.innerText = "PAGAR",
     buy.addEventListener("click", () =>{
-        Swal.fire({
+        if(creditForm === "") {
+        
+        
+        } else {Swal.fire({
             title: 'Estas seguro',
             text: "No hay reembolsos!",
             icon: 'warning',
@@ -109,7 +110,7 @@ const sold = () => {
                 })
             };
         })
-    })
+    }})
 
     payFooter.append(buy);
 
