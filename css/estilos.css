@@ -394,115 +394,82 @@ header button:hover {
 .custom-swal-container{
   z-index: 9999999999999999;
 }
-
-
-
-
-/* .cont-1 .card {
-  box-sizing: border-box;
-  background-color: white;
-  border: solid 3px whitesmoke;
-  padding: 20px;
-  border-radius: 3px;
-  height: 360px;
-  width: 236px;
-} */
-
-
-
-/*Footer*/
-footer {
-  background-color: #24252a;
-  min-height: 125px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+/*-----------------------------------------------------------------------*/
+/*FAQ*/
+.contenedor {
+  background-color: #C4D7E6;
+  text-align: center;
+  background-image: url(../img/vagabon-amb.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 800px;
+  width: 100%;
 }
-@media screen and (max-width: 550px) {
-  footer {
-    flex-direction: column;
-    padding: 5px;
+@media screen and (max-width: 460px) {
+  .contenedor {
+    background-image: url(../img/vagabonph.webp);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 }
-footer .logo {
-  height: 7vh;
-}
-footer .logotipo {
-  font-size: 25px;
-  font-weight: 400;
-  color: white;
+.contenedor h2 {
+  padding: 20px;
   text-align: center;
-  font-family: "Bruno Ace SC", cursive;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 3px;
+  font-size: 40px;
 }
-footer p {
-  font-size: 15px;
-}
-footer span {
-  font-size: 30px;
-}
-footer i {
-  text-decoration: none;
-  color: white;
-  margin: px;
-  border-radius: 50%;
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.35);
-  transition: 0.3 ease;
-}
-footer .fa-youtube {
-  background-color: red;
-  padding: 2px;
-  border-radius: 10px;
-  color: white;
-}
-footer .fa-youtube:hover {
-  background-color: red;
-  color: white;
-  box-shadow: 0 0 15px red;
-  box-shadow: 0 0 45px red;
-  box-shadow: 0 0 75px red;
-}
-footer .fa-instagram {
-  background-color: rgb(189, 42, 91);
-  padding: 2px;
-  border-radius: 10px;
-  color: white;
-}
-footer .fa-instagram:hover {
-  background-color: rgb(217, 44, 154);
-  color: white;
-  box-shadow: 0 0 15px rgb(217, 44, 154);
-  box-shadow: 0 0 45px rgb(217, 44, 154);
-  box-shadow: 0 0 75px rgb(217, 44, 154);
-}
-footer .fa-whatsapp {
-  background-color: rgb(37, 187, 37);
-  padding: 2px;
-  border-radius: 10px;
-  color: white;
-}
-footer .fa-whatsapp:hover {
-  background-color: rgb(53, 214, 39);
-  color: white;
-  box-shadow: 0 0 15px rgb(53, 214, 39);
-  box-shadow: 0 0 45px rgb(53, 214, 39);
-  box-shadow: 0 0 75px rgb(53, 214, 39);
-}
-footer .fa-linkedin {
-  background-color: rgb(43, 97, 184);
-  padding: 2px;
-  border-radius: 10px;
-  color: white;
-}
-footer .fa-linkedin:hover {
-  background-color: rgb(28, 70, 177);
-  color: white;
-  box-shadow: 0 0 15px rgb(28, 70, 177);
-  box-shadow: 0 0 45px rgb(28, 70, 177);
-  box-shadow: 0 0 75px rgb(28, 70, 177);
+.contenedor .faq {
+  padding: 20px;
 }
 
+.acordion {
+  font-size: 20px;
+  font-style: italic;
+  padding: 10px 10px;
+  background-color: rgb(62, 195, 228);
+  border: solid 1px black;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 215px;
+}
 
-/*------------------------------------------------------------------*/
+.acordion i{
+  padding-left: 5px;
+  font-size: 18px;
+}
+
+.panel {
+  font-size: 17px;
+  font-family: sans-serif;
+  color: #000;
+  line-height: 21px;
+  display: none;
+  padding: 10px;
+}
+
+.panel.active {
+  display: block;   /* Mostrar cuando tiene la clase active */
+  animation: fadeIn 0.3s ease-in-out;   /*animación de fade-in */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/*--------------------------------------------------------------------------------*/
+
 /*Contactos*/
 .contact {
   font-family: "Quicksand", sans-serif;
@@ -689,53 +656,103 @@ footer .fa-linkedin:hover {
   color: darkred;
 }
 
-/*FAQ*/
-.contenedor {
-  background-color: #C4D7E6;
-  text-align: center;
-  background-image: url(../img/vagabon-amb.jpg);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  min-height: 800px;
-  width: 100%;
+/*--------------------------------------------------------------------------------*/
+
+/*Footer*/
+footer {
+  background-color: #24252a;
+  min-height: 125px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
-@media screen and (max-width: 460px) {
-  .contenedor {
-    background-image: url(../img/vagabonph.webp);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+@media screen and (max-width: 550px) {
+  footer {
+    flex-direction: column;
+    padding: 5px;
   }
 }
-.contenedor h2 {
-  padding: 20px;
+footer .logo {
+  height: 7vh;
+}
+footer .logotipo {
+  font-size: 25px;
+  font-weight: 400;
+  color: white;
   text-align: center;
-  font-family: "Montserrat";
-  font-style: normal;
-  font-weight: 500;
-  letter-spacing: 3px;
-  font-size: 40px;
+  font-family: "Bruno Ace SC", cursive;
 }
-.contenedor .faq {
-  padding: 20px;
-}
-.contenedor summary {
-  font-size: 20px;
-}
-.contenedor p {
+footer p {
   font-size: 15px;
-  font-family: sans-serif;
-  color: #000;
 }
-.contenedor button {
-  padding: 10px 10px;
-  background-color: rgb(68, 188, 218);
-  border: solid 1px black;
+footer span {
+  font-size: 30px;
+}
+footer i {
+  text-decoration: none;
+  color: white;
+  margin: px;
+  border-radius: 50%;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.35);
+  transition: 0.3 ease;
+}
+footer .fa-youtube {
+  background-color: red;
+  padding: 2px;
   border-radius: 10px;
-  cursor: pointer;
-  width: 200px;
+  color: white;
 }
+footer .fa-youtube:hover {
+  background-color: red;
+  color: white;
+  box-shadow: 0 0 15px red;
+  box-shadow: 0 0 45px red;
+  box-shadow: 0 0 75px red;
+}
+footer .fa-instagram {
+  background-color: rgb(189, 42, 91);
+  padding: 2px;
+  border-radius: 10px;
+  color: white;
+}
+footer .fa-instagram:hover {
+  background-color: rgb(217, 44, 154);
+  color: white;
+  box-shadow: 0 0 15px rgb(217, 44, 154);
+  box-shadow: 0 0 45px rgb(217, 44, 154);
+  box-shadow: 0 0 75px rgb(217, 44, 154);
+}
+footer .fa-whatsapp {
+  background-color: rgb(37, 187, 37);
+  padding: 2px;
+  border-radius: 10px;
+  color: white;
+}
+footer .fa-whatsapp:hover {
+  background-color: rgb(53, 214, 39);
+  color: white;
+  box-shadow: 0 0 15px rgb(53, 214, 39);
+  box-shadow: 0 0 45px rgb(53, 214, 39);
+  box-shadow: 0 0 75px rgb(53, 214, 39);
+}
+footer .fa-linkedin {
+  background-color: rgb(43, 97, 184);
+  padding: 2px;
+  border-radius: 10px;
+  color: white;
+}
+footer .fa-linkedin:hover {
+  background-color: rgb(28, 70, 177);
+  color: white;
+  box-shadow: 0 0 15px rgb(28, 70, 177);
+  box-shadow: 0 0 45px rgb(28, 70, 177);
+  box-shadow: 0 0 75px rgb(28, 70, 177);
+}
+
+
+/*------------------------------------------------------------------*/
+
+
 
 /*COMIC y MANGA*/ /*Merchandaising*/
 .bloque {

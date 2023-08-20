@@ -1,6 +1,6 @@
 //const del body
 const body = document.getElementById("contact");
-
+//Contenedor del titulo
 const content = document.getElementById("content");
 content.className = "content";
 content.innerHTML = `
@@ -8,17 +8,23 @@ content.innerHTML = `
 `;
 
 body.append(content);
+
+//Contenedor de la info de para Contactarse
+
 const wrapp = document.getElementById("wrapp");
 content.append(wrapp);
-console.log(wrapp);
+
+//Contenedor del formulario de conteacto
+
 const divForm = document.createElement("div");
 divForm.className = "contact-form";
 divForm.innerHTML = `
 <h3>Contactanos</h3>
 `;
-
 wrapp.append(divForm);
-console.log (wrapp);
+
+//Formulario de Contacto
+
 const contactForm = document.createElement("form");
 contactForm.innerHTML = `
 <p>
@@ -53,6 +59,8 @@ contactForm.innerHTML = `
 
 divForm.append(contactForm);
 
+//Informacion de contacto
+
 const contactInfo = document.createElement("div");
 contactInfo.className = "contact-info"; 
 contactInfo.innerHTML = `
@@ -65,6 +73,25 @@ contactInfo.innerHTML = `
 `;
 
 divForm.append(contactInfo);
+
+//Contenedor de la Barra de navegacion
+
+const navCont = document.createElement("div");
+navCont.className = "navct"
+
+body.append(navCont);
+
+//Barra de navegacion
+
+const navBar = document.createElement("ul");
+navBar.innerHTML = `
+<li ><a  target="_self" href="../pags/comicymanga.html">Comic y manga</a></li>
+<li ><a  target="_self" href="../pags/merchandising.html">Merchandising</a></li>
+<li ><a  target="_self" href="../pags/faq.html">FAQ</a></li>
+<li ><a  target="_self" href="../index.html">HOME</a></li>
+`;
+
+navCont.append(navBar);
 
 
 
