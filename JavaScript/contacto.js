@@ -9,13 +9,12 @@ content.innerHTML = `
 
 body.append(content);
 
-//Contenedor de la info de para Contactarse
+// Container for the contact information
+const wrapp = document.createElement("div");
+wrapp.className = "contact-wrapper";
+content.append(wrapp);  // Añade "wrapp" antes de intentar agregar elementos a él
 
-const wrapp = document.getElementById("wrapp");
-content.append(wrapp);
-
-//Contenedor del formulario de conteacto
-
+// Container for the contact form
 const divForm = document.createElement("div");
 divForm.className = "contact-form";
 divForm.innerHTML = `
@@ -70,9 +69,15 @@ contactInfo.innerHTML = `
     <li><i class="fa fa-phone-volume"></i>+54123456789</li>
     <li><i class="fa fa-envelope"></i>contact@website.com</li>
 </ul>
+<p>
+Tienda especializada en mangas y comics hace 15 años. Somos distribuidor oficial de distintas editoriales. Contamos con distintos medios de pago y envio. Ante cualquier consulta no dudes en contactarnos!!
+</p>
+<p>
+Company.com 
+</p>
 `;
 
-divForm.append(contactInfo);
+wrapp.append(contactInfo);
 
 //Contenedor de la Barra de navegacion
 
@@ -85,17 +90,11 @@ body.append(navCont);
 
 const navBar = document.createElement("ul");
 navBar.innerHTML = `
-<li ><a  target="_self" href="../pags/comicymanga.html">Comic y manga</a></li>
-<li ><a  target="_self" href="../pags/merchandising.html">Merchandising</a></li>
-<li ><a  target="_self" href="../pags/faq.html">FAQ</a></li>
+<li ><a  target="_self" href="../html/comicymanga.html">Comic y manga</a></li>
+<li ><a  target="_self" href="../html/merchandising.html">Merchandising</a></li>
+<li ><a  target="_self" href="../html/faq.html">FAQ</a></li>
 <li ><a  target="_self" href="../index.html">HOME</a></li>
 `;
 
 navCont.append(navBar);
-
-
-
-
-
-
 
