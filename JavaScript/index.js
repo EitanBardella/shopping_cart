@@ -7,9 +7,8 @@ let cart = JSON.parse(localStorage.getItem("totalCart")) || [];
 //productos de la página
 
 const getProducts = async () => {
-    const response = await fetch("../data.json");
+    const response = await fetch("./data.json");
     const data = await response.json();
-    console.log(data);
 
     data.forEach((product) => {
         let content = document.createElement("div");
