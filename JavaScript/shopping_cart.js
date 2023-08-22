@@ -1,6 +1,6 @@
 
 //Ver Carrito (Me conviene pasar esta variable a shopping_cart??)
-const verCarrito = document.getElementById("verCarrito");
+const seeCart = document.getElementById("verCarrito");
 //Modal del carrito
 const modalContainer = document.getElementById("modal-container");
 //Modal de pago
@@ -126,7 +126,7 @@ const sold = () => {
 
 
 
-const pintarCarrito = () =>{
+const showCart = () =>{
 
     modalContainer.innerHTML = "";
     
@@ -148,11 +148,11 @@ const pintarCarrito = () =>{
     modalHeader.append(modalButton);
     
     //Recorrer array para mostrarlos en el carrito, junto con la cantidad y precio
-    carrito.forEach((product) => {
+    cart.forEach((product) => {
 
-        let carritoContent = document.createElement("div");
-        carritoContent.className = "modal-content"
-        carritoContent.innerHTML = `
+        let cartContent = document.createElement("div");
+        cartContent.className = "modal-content"
+        cartContent.innerHTML = `
             <img src="${product.img}"/>
             <h3>${product.nombre}</h3>
             <p>${product.precio}$</p>
@@ -163,24 +163,24 @@ const pintarCarrito = () =>{
             <span class="delete-produtc"> ❌ </span>
             `;
 
-            modalContainer.append(carritoContent);
+            modalContainer.append(cartContent);
 
-            let restar = carritoContent.querySelector(".restar");
+            let restar = cartContent.querySelector(".restar");
             restar.addEventListener("click", () => {
                 if(product.cantidad !== 1) {
                 product.cantidad--;
                 saveLocal();
-                pintarCarrito();
+                showCart();
                 }
             })
-            let sumar = carritoContent.querySelector(".sumar");
+            let sumar = cartContent.querySelector(".sumar");
             sumar.addEventListener("click", () => {
                 product.cantidad++;
                 saveLocal();
-                pintarCarrito();
+                showCart();
             })
 
-            let eliminar = carritoContent.querySelector(".delete-produtc");
+            let eliminar = cartContent.querySelector(".delete-produtc");
             eliminar.addEventListener("click", () => {
                 eliminarProducto(product.id);
                 Toastify({
@@ -202,7 +202,7 @@ const pintarCarrito = () =>{
             eliminar.addEventListener("click", eliminarProducto);
     })
     //Calculo del total del precio final
-    const total = carrito.reduce((acc, el) => acc + el.precio * el.cantidad, 0);
+    const total = cart.reduce((acc, el) => acc + el.precio * el.cantidad, 0);
 
     const totalBuying = document.createElement("div");
     totalBuying.className = "total-content"
@@ -219,18 +219,18 @@ const pintarCarrito = () =>{
 };
 
 
-verCarrito.addEventListener("click", pintarCarrito);
+seeCart.addEventListener("click", showCart);
 
 //Funcion eliminar, find por id, filter prods del carrito que no coincidan con el id, para volver a hacer/pintar el carrito sin ese id
 
 const eliminarProducto = (id) => {
-    const foundId = carrito.find((element) => element.id === id);
+    const foundId = cart.find((element) => element.id === id);
 
-    carrito = carrito.filter((carritoId) =>{
-        return carritoId !== foundId;
+    cart = cart.filter((cartId) =>{
+        return cartId !== foundId;
     });
     saveLocal();
-    pintarCarrito();
+    showCart();
 };
 
 
