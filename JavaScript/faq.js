@@ -1,6 +1,6 @@
-//section
-const contenedor = document.getElementById("contenedor");
-contenedor.innerHTML = `
+//const del section
+const sectionContent = document.getElementById("contenedor");
+sectionContent.innerHTML = `
 <h2>Frequently Asked Question</h2>
 `;
 
@@ -29,7 +29,7 @@ const Faq = (question, answer) => {
     btnFaq.append(faqContent);
     btnFaq.append(display)
 
-    //Evento para desplegar el acordion
+    //Evento para desplegar el acordion y que cambie el icono de flecha
     btnFaq.addEventListener("click", () => {
         faqContent.classList.toggle("active");
         if(faqContent.classList.contains("active")){
@@ -42,16 +42,16 @@ const Faq = (question, answer) => {
 };
 
 const faqElement1 = Faq("¿Quienes somos?", "Somos un grupo con más de 15 años de experiencia en el mundo de las ventas y fanáticos del mundo del manga y los comics, los cuales cumplieron su sueño de abrir una tienda especializada en nuestra pasión, comics y manga.");
-contenedor.append(faqElement1);
+sectionContent.append(faqElement1);
 
 const faqElement2 = Faq("¿Qué métodos de pago tenemos?", "Nostros nos manejamos con todo tipo de tarjetas de crédito (Visa, Mastercard), Tarjetas de debito y también mercado pago");
-contenedor.append(faqElement2);
+sectionContent.append(faqElement2);
 
 const faqElement3 = Faq("¿Donde puedo retirar mi compra?", "Se puede retirar de forma presencial o tambien se puede enviar via Correo Argentino.");
-contenedor.append(faqElement3);
+sectionContent.append(faqElement3);
 
 const faqElement4 = Faq("¿Cuanto tiempo de demora tiene el envio?", "El tiempo de envio de la compra va a depender del los tiempos que maneje Correo Argentino");
-contenedor.append(faqElement4);
+sectionContent.append(faqElement4);
 
 
 

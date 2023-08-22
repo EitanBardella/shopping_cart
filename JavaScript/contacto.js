@@ -42,21 +42,46 @@ contactForm.innerHTML = `
 </p>
 
 <p class="block">
-<label for="">Motivo</label>
+<label for="Affair">Motivo</label>
 <input type="text" name="Affair">
 </p>
 
 <p>
 <label for="">Mensaje</label>
-<textarea name="message" rows="3"></textarea>
+<textarea name="message" rows="3" cols="10"></textarea>
 </p>
 
 <p class="block">
-<button type="submit">Send</button>
+<button type="submit" id="submit">Send</button>
 </p>
 `;
 
 divForm.append(contactForm);
+
+
+//Sweet alert para que aparesca Correo enviado 5 segundos despues de haber hecho click
+const submit = document.getElementById("submit");
+submit.addEventListener("click", async (event) => {
+    event.preventDefault();
+
+    // Mostrar la alerta de carga
+    Swal.showLoading();
+
+    // Simular un retraso de 5 segundos (5000 milisegundos) utilizando await
+    await new Promise(resolve => setTimeout(resolve, 5000));
+
+    // Ocultar la alerta de carga y mostrar el mensaje de éxito
+    Swal.close();
+    Swal.fire({
+        title: 'Correo enviado con exito!!',
+        text: 'Gracias por contactar con nosotros',
+        icon: 'success', 
+        customClass: {
+            container: 'custom-swal-container'
+        }
+    });
+});
+
 
 //Informacion de contacto
 

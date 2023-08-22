@@ -39,7 +39,7 @@ const sold = () => {
     creditForm.className = "creditForm"
     creditForm.innerHTML = `
     <h1>AGREGUE SU TARJETA</h1>
-    <input class="credit-input">
+    <input class="credit-input" id="credit-input">
     <br></br>
     <i class="fa-brands fa-cc-visa"></i>
     <i class="fa-brands fa-cc-amex"></i>
@@ -74,9 +74,16 @@ const sold = () => {
     buy.className = "buyButton",
     buy.innerText = "PAGAR",
     buy.addEventListener("click", () =>{
-        if(creditForm === "") {
-        
-        
+        const input = document.getElementById("credit-input");
+        if(input.value ==="") {
+            Swal.fire({
+                title: 'No se han ingresado datos!!',
+                text: "Por favor ingrese, los datos requeridos",
+                icon: 'warning',
+                customClass: {
+                    container: 'custom-swal-container'
+                    }
+                });
         } else {Swal.fire({
             title: 'Estas seguro',
             text: "No hay reembolsos!",

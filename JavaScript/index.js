@@ -2,7 +2,7 @@
 const shopContent = document.getElementById("shop_content");
 
 //Array del carrito
-let carrito = JSON.parse(localStorage.getItem("totalCart")) || [];
+let cart = JSON.parse(localStorage.getItem("totalCart")) || [];
 
 //productos de la página
 
@@ -29,17 +29,17 @@ const getProducts = async () => {
         content.append(comprar)
         comprar.addEventListener("click", () => {
             // Repetir => Aumentar la cantida del prod y que no este 2 veces
-            const repeat = carrito.some((repeatProduct) => repeatProduct.id === product.id );
+            const repeat = cart.some((repeatProduct) => repeatProduct.id === product.id );
             
             if(repeat === true) {
-                carrito.map((prod) => {
+                cart.map((prod) => {
                     if(prod.id === product.id){
                         prod.cantidad++;
                     }
                 });
             }else {
     
-            carrito.push({
+            cart.push({
                 id: product.id,
                 img: product.img,
                 nombre: product.nombre,
@@ -48,7 +48,7 @@ const getProducts = async () => {
             });
         }
             saveLocal();
-    
+            //Notificacion de producto agregado o eliminado
             Toastify({
                 text: "Producto Agregado",
                 duration: 3000,
@@ -75,7 +75,7 @@ getProducts();
 
 //Set item
 const saveLocal = () => {
-localStorage.setItem("totalCart", JSON.stringify(carrito));
+localStorage.setItem("totalCart", JSON.stringify(cart));
 };
 
 //Get item
