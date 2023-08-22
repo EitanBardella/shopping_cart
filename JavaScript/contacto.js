@@ -67,8 +67,8 @@ submit.addEventListener("click", async (event) => {
     // Mostrar la alerta de carga
     Swal.showLoading();
 
-    // Simular un retraso de 5 segundos (5000 milisegundos) utilizando await
-    await new Promise(resolve => setTimeout(resolve, 5000));
+    // Simular un retraso de 3 segundos (3000 milisegundos) utilizando await
+    await new Promise(resolve => setTimeout(resolve, 3000));
 
     // Ocultar la alerta de carga y mostrar el mensaje de éxito
     Swal.close();
